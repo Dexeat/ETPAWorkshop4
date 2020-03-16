@@ -20,8 +20,6 @@ var config = {
 
 var player;
 var cursors;
-var saut;
-var sauvesaut;
 
 
 var game = new Phaser.Game(config);
@@ -37,6 +35,7 @@ function preload ()
     this.load.image('pv', 'assets/decor/plateformev.jpg')
     this.load.image('pi', 'assets/decor/pi.png')
     this.load.image('piv', 'assets/decor/piv.png')
+    this.load.image('t', 'assets/decor/teleporteur.png')
 }
 
 function create ()
@@ -51,6 +50,7 @@ function create ()
     platformev = this.physics.add.staticGroup();
     platformei = this.physics.add.staticGroup();
     platformeiv = this.physics.add.staticGroup();
+    teleporteur = this.physics.add.staticGroup();
 
 
     //fond
@@ -64,7 +64,7 @@ function create ()
 
     
 
-    //ajout des groupes
+    //Niveau 1
     sol.create(1024,767, 'sol' )
     rock.create(20, 727, 'rock').setOrigin(0).refreshBody();
     platforme.create(130,670,'p').setOrigin(0).refreshBody();
@@ -73,17 +73,30 @@ function create ()
     platformev.create(750, 300, 'pv').setOrigin(0).refreshBody();
     platforme.create(600, 670, 'p').setOrigin(0).refreshBody();
     platforme.create(800, 570, 'p').setOrigin(0).refreshBody();
+    teleporteur.create(1014, 767, 't');
+
+    //Niveau 2
+    platformeiv.create(1034,700,'piv');
+    platformeiv.create(1034, 600, 'piv');
+    platformeiv.create(1034, 550, 'piv');
+    platformei.create(1074, 510, 'pi')
+    platformeiv.create(1124, 490, 'piv');
+    platformei.create(1184, 450, 'pi')
 
     //colision
     this.physics.add.collider(player, rock);
     this.physics.add.collider(player, sol);
     this.physics.add.collider(player, platforme);
     this.physics.add.collider(player, platformev);
+    this.physics.add.collider(teleporteur, sol);
+    this.physics.add.collider(player, platformei);
+    this.physics.add.collider(player, platformeiv);
+    
+
 }
 
 function update ()
 {
-
     player.setVelocityX(350);
     if (cursors.left.isDown){
         player.setVelocityX(-8000);
