@@ -1,10 +1,13 @@
 var config = {
     type: Phaser.AUTO,
+    width: 1024,
+    height: 768,
     parent: 'phaser-example',
     physics: {
         default: 'arcade',
         arcade:{
-            debug: true
+            debug: true,
+            gravity: {y: 200},
         },
         
     },
@@ -23,7 +26,7 @@ var game = new Phaser.Game(config);
 
 function preload ()
 {
-    this.load.image('bg', 'assets/fond/html-color-codes-color-tutorials-hero-00e10b1f.jpg');
+    this.load.image('bg', 'assets/fond/fond.jpg');
     this.load.image('char', 'assets/char/char.png');
     this.load.image('rock','assets/decor/Edwig.png')
 }
@@ -31,8 +34,8 @@ function preload ()
 function create ()
 {
     //limite de la cam + le monde
-    this.cameras.main.setBounds(0, 0, 1920 * 2, 1080 * 2);
-    this.physics.world.setBounds(0, 0, 1920 * 2, 1080 * 2);
+    this.cameras.main.setBounds(0, 0, 2048, 768);
+    this.physics.world.setBounds(0, 0, 2048, 768);
     //Groupe
     rock = this.physics.add.staticGroup();
 
