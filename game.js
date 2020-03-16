@@ -28,20 +28,22 @@ var game = new Phaser.Game(config);
 
 function preload ()
 {
-    this.load.image('bg', 'assets/fond/fond.jpg');
+    this.load.image('bg', 'assets/fond/fond.png');
     this.load.image('char', 'assets/char/char.png');
     this.load.image('rock','assets/decor/Edwig.png')
     this.load.image('sol','assets/decor/sol.jpg')
+    this.load.image('plateforme', 'assets/decor/plateforme.jpg')
 }
 
 function create ()
 {
     //limite de la cam + le monde
-    this.cameras.main.setBounds(0, 0, 2048, 768);
-    this.physics.world.setBounds(0, 0, 2048, 768);
+    this.cameras.main.setBounds(0, 0, 81920, 768);
+    this.physics.world.setBounds(0, 0, 81920, 768);
     //Groupe
     rock = this.physics.add.staticGroup();
     sol = this.physics.add.staticGroup();
+    platforme = this.physics.add.staticGroup();
 
 
 
@@ -56,14 +58,15 @@ function create ()
     
 
     //ajout des groupes
-    rock.create(600, 400, 'rock');
-    rock.create(400, 400, 'rock');
-    rock.create(400, 200, 'rock');
     sol.create(1024,767, 'sol' )
+    rock.create(64, 750, 'rock');
+    platforme.create(130,670,'plateforme');
+    platforme.create(300,570, 'plateforme');
 
     //colision
     this.physics.add.collider(player, rock);
     this.physics.add.collider(player, sol);
+    this.physics.add.collider(player, platforme);
 }
 
 function update ()
@@ -85,7 +88,7 @@ function update ()
     }*/
 
     if (cursors.up.isDown  && player.body.touching.down ) {
-        player.setVelocityY(-8500);
+        player.setVelocityY(-9500);
     }
     if (cursors.down.isDown) {
         player.setVelocityY(500);
