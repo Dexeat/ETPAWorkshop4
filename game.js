@@ -57,6 +57,7 @@ function create ()
     fond = this.add.image(0, 0, 'bg1').setOrigin(0);
     fond2 = this.add.image(1024, 0, 'bg2').setOrigin(0);
     
+    //player
     cursors = this.input.keyboard.createCursorKeys();
     player = this.physics.add.image(0, 740, 'char');
     player.setCollideWorldBounds(true);
@@ -74,6 +75,7 @@ function create ()
     platforme.create(600, 670, 'p').setOrigin(0).refreshBody();
     platforme.create(800, 570, 'p').setOrigin(0).refreshBody();
     teleporteur.create(1014, 767, 't');
+    teleporteur.create(1014, 567, 't');
 
     //Niveau 2
     platformeiv.create(1034,700,'piv');
@@ -92,6 +94,9 @@ function create ()
     this.physics.add.collider(player, platformei);
     this.physics.add.collider(player, platformeiv);
     
+    //event
+    this.physics.add.collider(player,teleporteur,tp1,null,this);
+
 
 }
 
@@ -119,4 +124,8 @@ function update ()
         player.setVelocityY(500);
     }
     
+}
+
+function tp1(player,teleporteur){
+    player.setPosition(10,720)
 }
