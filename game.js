@@ -51,6 +51,7 @@ function create ()
     platformei = this.physics.add.staticGroup();
     platformeiv = this.physics.add.staticGroup();
     teleporteur = this.physics.add.staticGroup();
+    gene = this.physics.add.staticGroup();
 
 
     //fond
@@ -66,7 +67,10 @@ function create ()
     
 
     //Niveau 1
-    sol.create(1024,767, 'sol' )
+    sol.create(1024,767, 'sol' ).setScale(10).refreshBody()
+    //sol.create(2048,767, 'sol' )
+    //sol.create(3072,767, 'sol' )
+    //sol.create(4096,767, 'sol' )
     rock.create(20, 727, 'rock').setOrigin(0).refreshBody();
     platforme.create(130,670,'p').setOrigin(0).refreshBody();
     platforme.create(300, 570, 'p').setOrigin(0).refreshBody();
@@ -76,6 +80,7 @@ function create ()
     platforme.create(800, 570, 'p').setOrigin(0).refreshBody();
     teleporteur.create(1014, 767, 't');
     teleporteur.create(1014, 567, 't');
+    gene.create(50,660,'t')
 
     //Niveau 2
     platformeiv.create(1034,700,'piv');
@@ -84,6 +89,7 @@ function create ()
     platformei.create(1074, 510, 'pi')
     platformeiv.create(1124, 490, 'piv');
     platformei.create(1184, 450, 'pi')
+    platformeiv.create(1184, 440, 'piv');
 
     //colision
     this.physics.add.collider(player, rock);
@@ -96,6 +102,7 @@ function create ()
     
     //event
     this.physics.add.collider(player,teleporteur,tp1,null,this);
+    this.physics.add.collider(player,gene,endless,null,this);
 
 
 }
@@ -117,7 +124,7 @@ function update ()
         player.setVelocityY(500);
     }*/
 
-    if (cursors.up.isDown  && player.body.touching.down ) {
+    if (cursors.up.isDown  && player.body.touching.down) {
         player.setVelocityY(-1500);
     }
     if (cursors.down.isDown) {
@@ -128,4 +135,16 @@ function update ()
 
 function tp1(player,teleporteur){
     player.setPosition(10,720)
+}
+
+function endless(plateforme,gene){
+    gene.disableBody(true,true);
+    console.log('test !')
+    var y = 1200;
+    for (let index = 0; index < 30; index++) {
+        var x = Phaser.Math.Between(400, 800)
+        var plateforme = platforme.create(y,x,'p');
+        y += 200;
+        
+    }
 }
