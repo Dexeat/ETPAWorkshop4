@@ -67,7 +67,7 @@ function create ()
     
 
     //Niveau 1
-    sol.create(1024,767, 'sol' ).setScale(10).refreshBody()
+    sol.create(1024,790, 'sol' ).setScale(50).refreshBody()
     //sol.create(2048,767, 'sol' )
     //sol.create(3072,767, 'sol' )
     //sol.create(4096,767, 'sol' )
@@ -141,10 +141,10 @@ function endless(plateforme,gene){
     gene.disableBody(true,true);
     console.log('test !')
     var y = 1200;
-    for (let index = 0; index < 30; index++) {
-        var x = Phaser.Math.Between(400, 800)
+    for (let index = 0; index < 150; index++) {
+        var x = Phaser.Math.Between(500, 700)
         var plateforme = platforme.create(y,x,'p');
-        y += 200;
+        y += 250;
         
     }
 }
