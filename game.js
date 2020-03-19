@@ -143,7 +143,9 @@ function endless(plateforme,gene){
     var y = 1200;
     for (let index = 0; index < 150; index++) {
         var x = Phaser.Math.Between(500, 700)
+        var x2 = Phaser.Math.Between(0, 767)
         var plateforme = platforme.create(y,x,'p');
+        var plateforme = platforme.create(y+150,x2,'p');
         y += 250;
         
     }
