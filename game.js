@@ -78,18 +78,18 @@ function create ()
     platformev.create(750, 300, 'pv').setOrigin(0).refreshBody();
     platforme.create(600, 670, 'p').setOrigin(0).refreshBody();
     platforme.create(800, 570, 'p').setOrigin(0).refreshBody();
-    teleporteur.create(1014, 767, 't');
-    teleporteur.create(1014, 567, 't');
+    /*teleporteur.create(1014, 767, 't');
+    teleporteur.create(1014, 567, 't');*/
     gene.create(50,660,'t')
 
     //Niveau 2
-    platformeiv.create(1034,700,'piv');
+   /* platformeiv.create(1034,700,'piv');
     platformeiv.create(1034, 600, 'piv');
     platformeiv.create(1034, 550, 'piv');
     platformei.create(1074, 510, 'pi')
     platformeiv.create(1124, 490, 'piv');
     platformei.create(1184, 450, 'pi')
-    platformeiv.create(1184, 440, 'piv');
+    platformeiv.create(1184, 440, 'piv');*/
 
     //colision
     this.physics.add.collider(player, rock);
@@ -134,7 +134,7 @@ function update ()
 }
 
 function tp1(player,teleporteur){
-    player.setPosition(10,720)
+    player.setPosition( player.x-720,player.y)
 }
 
 function endless(plateforme,gene){
