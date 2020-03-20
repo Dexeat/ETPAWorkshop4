@@ -141,7 +141,7 @@ function endless(plateforme,gene){
     gene.disableBody(true,true);
     console.log('test !')
     var y = 1200;
-    for (let index = 0; index < 150; index++) {
+    for (let index = 0; index < 600; index++) {
         var x = Phaser.Math.Between(500, 700)
         var x2 = Phaser.Math.Between(0, 767)
         var plateforme = platforme.create(y,x,'p');
