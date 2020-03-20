@@ -109,8 +109,8 @@ function create ()
 
 function update ()
 {
-    /*player.setVelocityX(350);
-    if (cursors.left.isDown){
+    player.setVelocityX(350);
+    /*if (cursors.left.isDown){
         player.setVelocityX(-8000);
     }
     else if (cursors.right.isDown){
