@@ -6,7 +6,7 @@ var config = {
     physics: {
         default: 'arcade',
         arcade:{
-            debug: true,
+            debug: false,
             gravity: {y: 5000,/*x:300*/},
         },
         
@@ -109,13 +109,13 @@ function create ()
 
 function update ()
 {
-    player.setVelocityX(350);
+    /*player.setVelocityX(350);
     if (cursors.left.isDown){
         player.setVelocityX(-8000);
     }
     else if (cursors.right.isDown){
         player.setVelocityX(8000);
-    }
+    }*/
 
     /*if (cursors.up.isDown){
         player.setVelocityY(-6600);
